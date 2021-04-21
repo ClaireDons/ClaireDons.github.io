@@ -1,3 +1,1 @@
-## Claire Donnelly
-
-### About
+## About
