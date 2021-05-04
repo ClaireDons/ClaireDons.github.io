@@ -34,6 +34,8 @@ You can then install the mpi environment, netcdf, hdf5 and python by:
 `sudo apt-get install subversion g++ gfortran csh mpi-default-bin mpi-default-dev libhdf5-mpi-dev libhdf5-dev hdf5-tools libnetcdff-dev libnetcdf-dev python3 python3-dev
  libpython3-dev`
  
+ (You can combine these 2 commands if you want)
+ 
 #### Checking out the source code
 
 To get Chombo you need an [ANAG repository account](https://anag-repo.lbl.gov/).
@@ -79,7 +81,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
   `mkdir -p $BISICLES_HOME/petsc-install`
   
-  Change into download petsc directory and configure:
+  Change into the directory where you downloaded PETSc and configure:
   
   `cd $BISICLES_HOME/petsc`
   
