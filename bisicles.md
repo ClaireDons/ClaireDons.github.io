@@ -103,7 +103,8 @@ Edit the line:
 
 To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
 
-```PRECISION     = DOUBLE  
+```
+ PRECISION     = DOUBLE  
  CXX           = g++
  FC            = gfortran
  MPICXX        = mpiCC
