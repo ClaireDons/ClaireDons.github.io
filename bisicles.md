@@ -22,7 +22,7 @@ Recommended:
 
 ### 1. Debian/Ubuntu
 
-This is probably the easiest system to compile BISICLES on, if you don't have Ubuntu you can use a virtual machine or the Windows Subsystem for Linux. If you have a verion of Ubuntu that is older than 2016 you may need to follow the generic build instructions. 
+This is probably the easiest system to compile BISICLES on, if you don't have Ubuntu you can use a [virtual machine (VM)](https://www.virtualbox.org/) or the [Windows Subsystem for Linux (WSL)](https://ubuntu.com/wsl). If you have a verion of Ubuntu that is older than 2016 you may need to follow the generic build instructions. 
 
 #### Installing prerequisites and packages
 If it isn't already on your machine:
@@ -41,7 +41,7 @@ You can then install the mpi environment, netcdf, hdf5 and python by:
 To get Chombo you need an [ANAG repository account](https://anag-repo.lbl.gov/).
 You need to choose a username and password, that will be asked when you check out the source code. (You might want to write it down if you may need to compile BISICLES more than once and keep forgetting like I do. That being said, you can just make a new account). 
 
-* Create a new directory where you BISICLES to live, e.g.:
+* Create a new directory for BISICLES to live in, e.g.:
   
   `mkdir -p [/path/to/bisicles]`
 
@@ -69,7 +69,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
 * Download PETSc:
   
-  In `$BISICLES_HOME`:
+  `cd $BISICLES_HOME`:
   
   `git clone -b release https://gitlab.com/petsc/petsc.git petsc`
 
@@ -90,3 +90,59 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   Go through the instructions then export the path to the petsc installation, which Chombo will refer to:
 
   `export PETSC_DIR=$BISICLES_HOME/petsc-install`
+  
+#### Chombo Configuration
+  
+Copy the `Make.defs.local`file to `$BISICLES_HOME`
+
+`cp $BISICLES_HOME/BISICLES/docs/Make.defs.local $BISICLES_HOME`
+
+Edit the line:
+
+`BISICLES_HOME=[path/to/bisicles]`
+
+To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
+
+```PRECISION     = DOUBLE  
+ CXX           = g++
+ FC            = gfortran
+ MPICXX        = mpiCC
+ USE_HDF       = TRUE
+ HDFINCFLAGS   = -I/usr/include/hdf5/serial/
+ HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
+ HDFMPIINCFLAGS= -I/usr/include/hdf5/openmpi/ 
+ HDFMPILIBFLAGS= -L/usr/lib/x86_64-linux-gnu/hdf5/openmpi/ -lhdf5  -lz
+ cxxdbgflags   = -g -fPIC 
+ cxxoptflags   = -fPIC -O2
+ fdbgflags     =  -g -fPIC 
+ foptflags     = -fPIC -O3 -ffast-math -funroll-loops
+ ``` 
+
+Make a link to the `Make.defs.local`in the place that Chombo expects it:
+
+`ln -s $BISICLES_HOME/Make.defs.local $BISICLES_HOME/Chombo/lib/mk/Make.defs.local`
+  
+#### BISICLES Configuration
+  
+Next, create a makefile for BISICLES with the name of your machine:
+
+```
+cd $BISICLES_HOME/BISICLES/code/mk/
+uname -n
+[mymachine]
+cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]
+```
+
+Make sure it contains the following information:
+
+```
+PYTHON_INC=$(shell python3-config --includes)
+#--ldflags does not contain -lpython for reasons that escape me
+PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
+NETCDF_HOME=$(shell nc-config --prefix)
+NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl
+```
+
+#### Compiling BISICLES
+
+#### Running an Example Problem
