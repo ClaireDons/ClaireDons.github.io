@@ -141,4 +141,25 @@ NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
 
 #### Compiling BISICLES
 
+* To compile a standalone BISICLES (so no filetools etc) you can run this:
+
+  ```cd $BISICLES_HOME/BISICLES/code/exec2D
+  make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
+
+  This is assuming that you followed all of these instructions, if you chose not to include PETSc then:
+
+  ```cd $BISICLES_HOME/BISICLES/code/exec2D
+  make all OPT=TRUE MPI=TRUE```
+
+* To compile all of BISICLES:
+
+```cd $BISICLES_HOME/BISICLES/code
+make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
+
+(if not using PETSc leave the PETSc statement out)
+
+Then you should have a version of BISICLES that can run problems!
+
 #### Running an Example Problem
+
+#### Analysis
