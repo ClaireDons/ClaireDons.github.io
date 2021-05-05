@@ -103,8 +103,8 @@ Edit the line:
 
 To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
 
-```
- PRECISION     = DOUBLE  
+ 
+ ```PRECISION     = DOUBLE  
  CXX           = g++
  FC            = gfortran
  MPICXX        = mpiCC
@@ -116,8 +116,7 @@ To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to)
  cxxdbgflags   = -g -fPIC 
  cxxoptflags   = -fPIC -O2
  fdbgflags     =  -g -fPIC 
- foptflags     = -fPIC -O3 -ffast-math -funroll-loops
- ``` 
+ foptflags     = -fPIC -O3 -ffast-math -funroll-loops``` 
 
 Make a link to the `Make.defs.local`in the place that Chombo expects it:
 
@@ -127,22 +126,18 @@ Make a link to the `Make.defs.local`in the place that Chombo expects it:
   
 Next, create a makefile for BISICLES with the name of your machine:
 
-```
-cd $BISICLES_HOME/BISICLES/code/mk/
+```cd $BISICLES_HOME/BISICLES/code/mk/
 uname -n
 [mymachine]
-cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]
-```
+cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]```
 
 Make sure it contains the following information:
 
-```
-PYTHON_INC=$(shell python3-config --includes)
+```PYTHON_INC=$(shell python3-config --includes)
 #--ldflags does not contain -lpython for reasons that escape me
 PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
 NETCDF_HOME=$(shell nc-config --prefix)
-NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl
-```
+NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
 
 #### Compiling BISICLES
 
