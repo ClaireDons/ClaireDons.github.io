@@ -93,51 +93,51 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
 #### Chombo Configuration
   
-Copy the `Make.defs.local`file to `$BISICLES_HOME`
+* Copy the `Make.defs.local`file to `$BISICLES_HOME`
 
-`cp $BISICLES_HOME/BISICLES/docs/Make.defs.local $BISICLES_HOME`
+  `cp $BISICLES_HOME/BISICLES/docs/Make.defs.local $BISICLES_HOME`
 
-Edit the line:
+* Edit the file so that:
 
-`BISICLES_HOME=[path/to/bisicles]`
+  `BISICLES_HOME=[path/to/bisicles]`
 
-To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
+  To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
 
- 
- ```PRECISION     = DOUBLE  
- CXX           = g++
- FC            = gfortran
- MPICXX        = mpiCC
- USE_HDF       = TRUE
- HDFINCFLAGS   = -I/usr/include/hdf5/serial/
- HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
- HDFMPIINCFLAGS= -I/usr/include/hdf5/openmpi/ 
- HDFMPILIBFLAGS= -L/usr/lib/x86_64-linux-gnu/hdf5/openmpi/ -lhdf5  -lz
- cxxdbgflags   = -g -fPIC 
- cxxoptflags   = -fPIC -O2
- fdbgflags     =  -g -fPIC 
- foptflags     = -fPIC -O3 -ffast-math -funroll-loops``` 
 
-Make a link to the `Make.defs.local`in the place that Chombo expects it:
+   ```PRECISION     = DOUBLE  
+   CXX           = g++
+   FC            = gfortran
+   MPICXX        = mpiCC
+   USE_HDF       = TRUE
+   HDFINCFLAGS   = -I/usr/include/hdf5/serial/
+   HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
+   HDFMPIINCFLAGS= -I/usr/include/hdf5/openmpi/ 
+   HDFMPILIBFLAGS= -L/usr/lib/x86_64-linux-gnu/hdf5/openmpi/ -lhdf5  -lz
+   cxxdbgflags   = -g -fPIC 
+   cxxoptflags   = -fPIC -O2
+   fdbgflags     =  -g -fPIC 
+   foptflags     = -fPIC -O3 -ffast-math -funroll-loops``` 
 
-`ln -s $BISICLES_HOME/Make.defs.local $BISICLES_HOME/Chombo/lib/mk/Make.defs.local`
+* Make a link to the `Make.defs.local`in the place that Chombo expects it:
+
+  `ln -s $BISICLES_HOME/Make.defs.local $BISICLES_HOME/Chombo/lib/mk/Make.defs.local`
   
 #### BISICLES Configuration
   
-Next, create a makefile for BISICLES with the name of your machine:
+* Next, create a makefile for BISICLES with the name of your machine:
 
-```cd $BISICLES_HOME/BISICLES/code/mk/
-uname -n
-[mymachine]
-cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]```
+  ```cd $BISICLES_HOME/BISICLES/code/mk/
+  uname -n
+  [mymachine]
+  cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]```
 
-Make sure it contains the following information:
+* Make sure it contains the following information:
 
-```PYTHON_INC=$(shell python3-config --includes)
-#--ldflags does not contain -lpython for reasons that escape me
-PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
-NETCDF_HOME=$(shell nc-config --prefix)
-NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
+  ```PYTHON_INC=$(shell python3-config --includes)
+  #--ldflags does not contain -lpython for reasons that escape me
+  PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
+  NETCDF_HOME=$(shell nc-config --prefix)
+  NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
 
 #### Compiling BISICLES
 
@@ -153,10 +153,10 @@ NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
 
 * To compile all of BISICLES:
 
-```cd $BISICLES_HOME/BISICLES/code
-make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
+  ```cd $BISICLES_HOME/BISICLES/code
+  make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
 
-(if not using PETSc leave the PETSc statement out)
+  (if not using PETSc leave the PETSc statement out as above)
 
 Then you should have a version of BISICLES that can run problems!
 
