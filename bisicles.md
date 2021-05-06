@@ -47,7 +47,7 @@ You need to choose a username and password, that will be asked when you check ou
 
 * Export the path to this directory so you can refer to it easily:
   
-  `export $BISICLES_HOME=[/path/to/bisicles]`
+  `export BISICLES_HOME=[/path/to/bisicles]`
 
   This will mean that you can use `$BISICLES_HOME` to refer to that path without having to type it out each time (and also you can copy and paste instructions).
   
