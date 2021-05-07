@@ -105,29 +105,17 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
 
    ```PRECISION     = DOUBLE
-   
    CXX           = g++
-   
    FC            = gfortran
-   
    MPICXX        = mpiCC
-   
    USE_HDF       = TRUE
-   
    HDFINCFLAGS   = -I/usr/include/hdf5/serial/
-   
    HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
-   
    HDFMPIINCFLAGS= -I/usr/include/hdf5/openmpi/ 
-   
    HDFMPILIBFLAGS= -L/usr/lib/x86_64-linux-gnu/hdf5/openmpi/ -lhdf5  -lz
-   
    cxxdbgflags   = -g -fPIC 
-   
    cxxoptflags   = -fPIC -O2
-   
    fdbgflags     =  -g -fPIC 
-   
    foptflags     = -fPIC -O3 -ffast-math -funroll-loops``` 
 
 * Make a link to the `Make.defs.local`in the place that Chombo expects it:
@@ -138,45 +126,41 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
 * Next, create a makefile for BISICLES with the name of your machine:
 
-  ```cd $BISICLES_HOME/BISICLES/code/mk/
+  `cd $BISICLES_HOME/BISICLES/code/mk/`
   
-  uname -n
+  `uname -n`
   
-  [mymachine]
+  `[mymachine]`
   
-  cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]```
+  `cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]`
 
 * Make sure it contains the following information:
 
   ```PYTHON_INC=$(shell python3-config --includes)
-  
   #--ldflags does not contain -lpython for reasons that escape me
-  
   PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
-  
   NETCDF_HOME=$(shell nc-config --prefix)
-  
   NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl```
 
 #### Compiling BISICLES
 
 * To compile a standalone BISICLES (so no filetools etc) you can run this:
 
-  ```cd $BISICLES_HOME/BISICLES/code/exec2D
+  `cd $BISICLES_HOME/BISICLES/code/exec2D`
   
-  make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
+  `make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE`
 
   This is assuming that you followed all of these instructions, if you chose not to include PETSc then:
 
-  ```cd $BISICLES_HOME/BISICLES/code/exec2D
+  `cd $BISICLES_HOME/BISICLES/code/exec2D`
   
-  make all OPT=TRUE MPI=TRUE```
+  `make all OPT=TRUE MPI=TRUE`
 
 * To compile all of BISICLES:
 
-  ```cd $BISICLES_HOME/BISICLES/code
+  `cd $BISICLES_HOME/BISICLES/code
   
-  make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE```
+  `make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE`
 
   (if not using PETSc leave the PETSc statement out as above)
 
