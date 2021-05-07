@@ -113,7 +113,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
   `BISICLES_HOME=[path/to/bisicles]`
 
-  To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
+  To reflect be the path to where BISICLES lives ( what `$BISICLES_HOME` is set to) and make sure that it contains the following information:
 
         PRECISION     = DOUBLE
         CXX           = g++
