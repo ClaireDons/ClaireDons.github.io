@@ -115,19 +115,23 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
   To reflect be the path to where BISICLES live ( what `$BISICLES_HOME` is set to) then make sure that it contains the following information:
 
-
         PRECISION     = DOUBLE
         CXX           = g++
         FC            = gfortran
+        MPI           = TRUE
         MPICXX        = mpiicc
+        USE_64        = TRUE
         USE_HDF       = TRUE
-        HDFINCFLAGS   = -I/usr/include/hdf5/serial/
-        HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
-        HDFMPIINCFLAGS= -I/usr/include/hdf5/openmpi/ 
-        HDFMPILIBFLAGS= -L/usr/lib/x86_64-linux-gnu/hdf5/openmpi/ -lhdf5  -lz
-        cxxdbgflags   = -g -fPIC 
-        cxxoptflags   = -fPIC -O2
-        fdbgflags     =  -g -fPIC 
+        #make sure BISICLES_HOME is correct
+        BISICLES_HOME=[path/to/bisicles]
+        HDFINCFLAGS   = -I$(BISICLES_HOME)/hdf5/serial/include
+        HDFLIBFLAGS   = -L$(BISICLES_HOME)/hdf5/serial/lib -lhdf5 -lz
+        ## Note: don't set the HDFMPI* variables if you don't have parallel HDF installed
+        HDFMPIINCFLAGS= -I$(BISICLES_HOME)/hdf5/parallel/include
+        HDFMPILIBFLAGS= -L$(BISICLES_HOME)/hdf5/parallel/lib -lhdf5  -lz
+        cxxdbgflags    = -g -fPIC
+        cxxoptflags    = -fPIC -O2
+        fdbgflags     =  -g -fPIC
         foptflags     = -fPIC -O3 -ffast-math -funroll-loops
 
 * Make a link to the `Make.defs.local`in the place that Chombo expects it:
