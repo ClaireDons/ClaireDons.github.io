@@ -1,21 +1,12 @@
 
-### 1. Debian/Ubuntu
+## KNMI HPC (Intel mpi)
 
-This is probably the easiest system to compile BISICLES on, if you don't have Ubuntu you can use a [virtual machine (VM)](https://www.virtualbox.org/) or the [Windows Subsystem for Linux (WSL)](https://ubuntu.com/wsl). If you have a verion of Ubuntu that is older than 2016 you may need to follow the generic build instructions. 
+This walkthrough is for if you want to compile BISICLES on the HPC at KNMI but can be more broadly related to any system that uses the [Intel MPI library](https://software.intel.com/content/www/us/en/develop/documentation/mpi-developer-guide-linux/top.html) (instead of [openMPI](https://www.open-mpi.org/)) and where you may not have sudo rights. 
 
-#### Installing prerequisites and packages
-If it isn't already on your machine:
+The instructions are essentially the same to the [generic build instructions](http://davis.lbl.gov/Manuals/BISICLES-DOCS/readme.html) but with references to Intel MPI. 
 
-`sudo apt-get install make`
-
-You can then install the mpi environment, netcdf, hdf5 and python by: 
-
-`sudo apt-get install subversion g++ gfortran csh mpi-default-bin mpi-default-dev libhdf5-mpi-dev libhdf5-dev hdf5-tools libnetcdff-dev libnetcdf-dev python3 python3-dev
- libpython3-dev`
  
- (You can combine these 2 commands if you want)
- 
-#### Checking out the source code
+### 1. Checking out the source code
 
 To get Chombo you need an [ANAG repository account](https://anag-repo.lbl.gov/).
 You need to choose a username and password, that will be asked when you check out the source code. (You might want to write it down if you may need to compile BISICLES more than once and keep forgetting like I do. That being said, you can just make a new account). 
@@ -39,10 +30,14 @@ You need to choose a username and password, that will be asked when you check ou
   `svn co https://anag-repo.lbl.gov/svn/Chombo/release/3.2 Chombo`
 
   `svn co https://anag-repo.lbl.gov/svn/BISICLES/public/trunk BISICLES`
+  
+I am using the main development branch here instead of the current release, as the current release doesn't support Python3. However, unlike for the Debian/Ubuntu build, it doesn't matter which version you use. 
 
-  The BISICLES version here is the main development branch rather than the current release as the current release doesn't support Python3 (as of May 2021). 
+### 2. Dependencies
+### 3. HDF5
+### 4. NetCDF
 
-#### Installing PETSc
+### 5. Installing PETSc
 
 You can skip this if you don't want to use PETSc. If you have no idea what PETSc is or if you're not sure if you want it, then install PETSc. It seems to be the build to do these days. 
 
@@ -86,7 +81,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
         PRECISION     = DOUBLE
         CXX           = g++
         FC            = gfortran
-        MPICXX        = mpiCC
+        MPICXX        = mpiicc
         USE_HDF       = TRUE
         HDFINCFLAGS   = -I/usr/include/hdf5/serial/
         HDFLIBFLAGS   = -L/usr/lib/x86_64-linux-gnu/hdf5/serial/ -lhdf5 -lz
@@ -111,7 +106,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
   `[mymachine]`
   
-  `cp Make.defs.ubuntu_20.4 Make.defs.[mymachine]`
+  `cp Make.defs.template Make.defs.[mymachine]`
 
 * Make sure it contains the following information:
 
