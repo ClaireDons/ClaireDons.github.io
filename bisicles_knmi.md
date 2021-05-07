@@ -34,7 +34,22 @@ You need to choose a username and password, that will be asked when you check ou
 I am using the main development branch here instead of the current release, as the current release doesn't support Python3. However, unlike for the Debian/Ubuntu build, it doesn't matter which version you use. 
 
 ### 2. Dependencies
+
+Chombo needs HDF5 to function and BISICLES has a built in tool to convert HDF5 to NetCDF. However, if you can't get NetCDF to work then it doesn't matter too much if you can't get it to work. This was my case, I tend to not use that tool on the HPC anyway. I left the instructions in case one day I have better luck.  
+
+You can download the dependencies by:
+
+`cd $BISICLES_HOME/BISICLES/docs`
+
+`chmod +x download_dependencies.sh`
+
+`./download_dependencies.sh`
+
+This will download and unpack both HDF5 and NetCDF into `$BISICLES_HOME`.
+
 ### 3. HDF5
+
+
 ### 4. NetCDF
 
 ### 5. Installing PETSc
@@ -65,7 +80,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
   `export PETSC_DIR=$BISICLES_HOME/petsc-install`
   
-#### Chombo Configuration
+### 6. Chombo Configuration
   
 * Copy the `Make.defs.local`file to `$BISICLES_HOME`
 
@@ -96,7 +111,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
   `ln -s $BISICLES_HOME/Make.defs.local $BISICLES_HOME/Chombo/lib/mk/Make.defs.local`
   
-#### BISICLES Configuration
+### 7. BISICLES Configuration
   
 * Next, create a makefile for BISICLES with the name of your machine:
 
@@ -108,15 +123,8 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
   `cp Make.defs.template Make.defs.[mymachine]`
 
-* Make sure it contains the following information:
 
-        PYTHON_INC=$(shell python3-config --includes)
-        #--ldflags does not contain -lpython for reasons that escape me
-        PYTHON_LIBS=-lpython3.8 $(shell python3-config --ldflags)
-        NETCDF_HOME=$(shell nc-config --prefix)
-        NETCDF_LIBS=-lnetcdff -lnetcdf -lhdf5_hl
-
-#### Compiling BISICLES
+### 8. Compiling BISICLES
 
 * To compile a standalone BISICLES (so no filetools etc) you can run this:
 
@@ -140,6 +148,6 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
 
 Then you should have a version of BISICLES that can run problems!
 
-#### Running an Example Problem
+### 9. Running an Example Problem
 
-#### Analysis
+### 10. Analysis
