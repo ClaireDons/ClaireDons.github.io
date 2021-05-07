@@ -49,8 +49,31 @@ This will download and unpack both HDF5 and NetCDF into `$BISICLES_HOME`.
 
 ### 3. HDF5
 
+Here you can choose whether you want to have a serial or parallel (using mpi) build. It might just be easier to build both honestly. 
+
+* Serial Build
+
+`cd $BISICLES_HOME/hdf5/serial/src/hdf5-1.8.21/`
+
+`CC=gcc CFLAGS=-fPIC ./configure --prefix=$BISICLES_HOME/hdf5/serial/ --enable-shared=no`
+
+It'll then configure a bunch of things and come out with a summary. Then do:
+
+`make install`
+
+* Parallel Build
+
+`cd $BISICLES_HOME/hdf5/parallel/src/hdf5-1.8.21/`
+
+`CC=mpiicc ./configure --prefix=$BISICLES_HOME/hdf5/parallel/ --enable-shared=no --enable-parallel=yes`
+
+As with the serial build, it will give you a summary of the configurations. Then do:
+
+`make install`
 
 ### 4. NetCDF
+
+This is the bit that may fail and doesn't matter. I will write instructions one day maybe. 
 
 ### 5. Installing PETSc
 
