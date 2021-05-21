@@ -43,15 +43,13 @@ You need to choose a username and password, that will be asked when you check ou
 
 #### Installing PETSc
 
-You can skip this if you don't want to use PETSc. If you have no idea what PETSc is or if you're not sure if you want it, then install PETSc. It seems to be the build to do these days. 
+You can skip this if you don't want to use PETSc. If you have no idea what PETSc is or if you're not sure if you want it, then install PETSc. It seems to be the build to do these days. The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
 
 * Download PETSc:
   
   `cd $BISICLES_HOME`:
   
   `git clone -b release https://gitlab.com/petsc/petsc.git petsc`
-
-  The generic instructions tell you to download the "maint" but it doesn't seem to be possible anymore. For some reason your download directory needs to be called `petsc`now or it refuses to install. The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
 
 * Configure PETSc:
 
