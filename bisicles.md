@@ -24,7 +24,7 @@ Recommended:
 
 ## Issues, warning and other things you may want to do:
 
-* **You may want to add the path to `$BISICLES_HOME` to make things easier when doing things with BISICLES.** 
+* **You may want to permanently add the path to `$BISICLES_HOME` to make things easier when doing things with BISICLES.** 
 
 If using bash then you can add:
 
