@@ -137,7 +137,7 @@ The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful informa
         PRECISION     = DOUBLE
         CXX           = g++
         FC            = gfortran
-        MPI           = TRUE
+        #MPI           = TRUE
         MPICXX        = mpiicc
         USE_64        = TRUE
         USE_HDF       = TRUE
