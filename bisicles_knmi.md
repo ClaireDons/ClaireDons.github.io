@@ -18,7 +18,7 @@ You can then follow the [generic build instructions](http://davis.lbl.gov/Manual
 
 ## Intel mpi
 
-**_This walkthrough will compile BISICLES but will not currently run in your workspace on the HPC due to the Lustre Filesystem setup. So for now the only version that works in the openmpi._**
+**_This walkthrough will compile BISICLES but will not currently run in your workspace on the HPC due to the Lustre Filesystem setup. So for now the only version that works is the openmpi version._**
 
 This walkthrough is for if you want to compile BISICLES on the HPC at KNMI but can be more broadly related to any system that uses the [Intel MPI library](https://software.intel.com/content/www/us/en/develop/documentation/mpi-developer-guide-linux/top.html) (instead of [openMPI](https://www.open-mpi.org/)) and where you may not have sudo rights. 
 
