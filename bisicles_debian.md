@@ -141,7 +141,3 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   (if not using PETSc leave the PETSc statement out as above)
 
 Then you should have a version of BISICLES that can run problems!
-
-#### Running an Example Problem
-
-#### Analysis
