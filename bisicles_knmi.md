@@ -1,5 +1,24 @@
 
-## KNMI HPC (Intel mpi)
+# KNMI HPC
+
+## Open mpi
+
+To compile BISICLES on the HPC using open MPI, you need to change the default MPI from Intel to OpenMPI. You can do this with:<br>
+
+`module load openmpi`
+
+You can check if this worked with:<br>
+
+`which mpirun`or `which mpiexec`
+<br>
+
+You can then follow the [generic build instructions](http://davis.lbl.gov/Manuals/BISICLES-DOCS/readme.html)<br>
+
+`module load openmpi` will also need to be added to your submission script for the HPC. 
+
+## Intel mpi
+
+**_This walkthrough will compile BISICLES but will not currently run in your workspace on the HPC due to the Lustre Filesystem setup. So for now the only version that works in the openmpi._**
 
 This walkthrough is for if you want to compile BISICLES on the HPC at KNMI but can be more broadly related to any system that uses the [Intel MPI library](https://software.intel.com/content/www/us/en/develop/documentation/mpi-developer-guide-linux/top.html) (instead of [openMPI](https://www.open-mpi.org/)) and where you may not have sudo rights. 
 
@@ -85,7 +104,7 @@ You can skip this if you don't want to use PETSc. If you have no idea what PETSc
   
   `git clone -b release https://gitlab.com/petsc/petsc.git petsc`
 
-  The generic instructions tell you to download the "maint" but it doesn't seem to be possible anymore. For some reason your download directory needs to be called `petsc`now or it refuses to install. The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
+The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
 
 * Configure PETSc:
 
