@@ -96,15 +96,13 @@ This is the bit that may fail and doesn't matter. I will write instructions one 
 
 ### 5. Installing PETSc
 
-You can skip this if you don't want to use PETSc. If you have no idea what PETSc is or if you're not sure if you want it, then install PETSc. It seems to be the build to do these days. 
+You can skip this if you don't want to use PETSc. If you have no idea what PETSc is or if you're not sure if you want it, then install PETSc. It seems to be the build to do these days. The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
 
 * Download PETSc:
   
   `cd $BISICLES_HOME`:
   
   `git clone -b release https://gitlab.com/petsc/petsc.git petsc`
-
-The [PETSc](https://www.mcs.anl.gov/petsc/index.html) website has useful information on what PETSc is, downloading and installing it. 
 
 * Configure PETSc:
 
