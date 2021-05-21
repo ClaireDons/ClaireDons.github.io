@@ -22,7 +22,7 @@ Walkthroughs for:
 1. [Debian/Ubuntu systems](https://clairedons.github.io/bisicles_debian)
 2. [KNMI HPC](https://clairedons.github.io/bisicles_knmi)
 
-Issues, warning and other things you may want to do:
+## Issues, warning and other things you may want to do:
 
 * **You may want to add the path to `$BISICLES_HOME` to make things easier when doing things with BISICLES.** 
 
@@ -64,4 +64,4 @@ I think this is something to do with openMPI and is just a warning, if this pops
 
 On the KNMI HPC, this seems to be due to how the Lustre file system may be mounted and/or only seems to be a problem when compiling with the Intel MPI. I don't really have a solution to this other than to recompile with openMPI if possible. 
 
-https://trac.mcs.anl.gov/projects/parallel-netcdf/ticket/21
+[Ticket with the same issue](https://trac.mcs.anl.gov/projects/parallel-netcdf/ticket/21)
