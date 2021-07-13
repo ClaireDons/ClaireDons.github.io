@@ -1,7 +1,8 @@
 ### 1. Mac OS
 This is a work in progress I still am trying to get things to work. Useful links:
 
-
+* [The Chombo wiki page](https://github.com/GRChombo/GRChombo/wiki) which goes into more detail about make files and FAQs
+* [Examples of Make.defs.local files for different systems](https://github.com/GRChombo/GRChombo/tree/main/InstallNotes/MakeDefsLocalExamples)
 
 #### Installing prerequisites and packages
 You can install many of the dependencies you need through "brew", a guide to installation is found [here](https://docs.brew.sh/Installation).
