@@ -1,5 +1,7 @@
 ### 1. Mac OS
-This is a work in progress I still am trying to get things to work.
+This is a work in progress I still am trying to get things to work. Useful links:
+
+
 
 #### Installing prerequisites and packages
 You can install many of the dependencies you need through "brew", a guide to installation is found [here](https://docs.brew.sh/Installation).
@@ -11,6 +13,10 @@ To compile BISICLES you will need:
 as well as potentially:
 
 `brew install petsc netcdf`
+
+#### HDF5 and NetCDF
+
+The hdf5 version installed through brew only works for a serial build, so if you are planning on a parallel build, you may need to install a parallel hdf5 separately. This can be done following a modified version of the [generic build instructions](http://davis.lbl.gov/Manuals/BISICLES-DOCS/readme.html). 
  
 #### Checking out the source code
 
@@ -96,20 +102,12 @@ You need to choose a username and password, that will be asked when you check ou
 
   `cd $BISICLES_HOME/BISICLES/code/exec2D`
   
-  `make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE`
-
-  This is assuming that you followed all of these instructions, if you chose not to include PETSc then:
-
-  `cd $BISICLES_HOME/BISICLES/code/exec2D`
-  
-  `make all OPT=TRUE MPI=TRUE`
+  `make all`
 
 * To compile all of BISICLES:
 
   `cd $BISICLES_HOME/BISICLES/code`
   
-  `make all OPT=TRUE MPI=TRUE USE_PETSC=TRUE`
-
-  (if not using PETSc leave the PETSc statement out as above)
+  `make all`
 
 Then you should have a version of BISICLES that can run problems!
