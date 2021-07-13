@@ -1,8 +1,16 @@
 ### 1. Mac OS
-This is a work in progress I still am trying to get things to work. 
+This is a work in progress I still am trying to get things to work.
 
 #### Installing prerequisites and packages
-You can install many of the dependencies you need through "brew". 
+You can install many of the dependencies you need through "brew", a guide to installation is found [here](https://docs.brew.sh/Installation).
+
+To compile BISICLES you will need:
+
+`brew install subversion make hdf5 gcc mpich zlib wget perl libomp`
+
+as well as potentially:
+
+`brew install petsc netcdf`
  
 #### Checking out the source code
 
