@@ -54,7 +54,7 @@ I'm currently only trying to get a serial build to work so some options are comm
 
   `cp $BISICLES_HOME/BISICLES/docs/Make.defs.local $BISICLES_HOME`
 
-* Currently the Make.defs.local contains the following information:
+* Currently the Make.defs.local, based on [this one](https://github.com/GRChombo/GRChombo/blob/main/InstallNotes/MakeDefsLocalExamples/Mac-Catalina-GCC.Make.defs.local), contains the following information:
   
       
         PRECISION       = DOUBLE
@@ -74,8 +74,7 @@ I'm currently only trying to get a serial build to work so some options are comm
         #HDF5_DIR = /Users/clairedonnelly/bisicles/hdf5/serial
         HDFINCFLAGS     = -I/Users/clairedonnelly/bisicles/hdf5/serial/include
         HDFLIBFLAGS     = -L/Users/clairedonnelly/bisicles/hdf5/serial/lib -lhdf5 -lz
-        # hdf5 v1.10 library downloaded and built using CMake with --enable-parallel
-        # (see also the hdf5_cmake_configure.sh script)
+        # Parallel hdf5
         #HDF5_PARALLEL_DIR = /Users/clairedonnelly/bisicles/hdf5/parallel
         #HDFMPIINCFLAGS  = -I${HDF5_PARALLEL_DIR}/include
         #HDFMPILIBFLAGS  = -L${HDF5_PARALLEL_DIR}/lib -lhdf5 -lz
