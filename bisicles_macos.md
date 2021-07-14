@@ -17,7 +17,40 @@ as well as potentially:
 
 #### HDF5 and NetCDF
 
-The hdf5 version installed through brew only works for a serial build, so if you are planning on a parallel build, you may need to install a parallel hdf5 separately. This can be done following a modified version of the [generic build instructions](http://davis.lbl.gov/Manuals/BISICLES-DOCS/readme.html). 
+The hdf5 version installed through brew only works for a serial build, so if you are planning on a parallel build, you may need to install a parallel hdf5 separately. This can be done following a modified version of the [generic build instructions](http://davis.lbl.gov/Manuals/BISICLES-DOCS/readme.html).
+ 
+Updated netcdf download source is found [here](https://www.unidata.ucar.edu/downloads/netcdf/).
+
+Modified `download_dependencies.sh`looks like this:
+
+        cd $BISICLES_HOME
+        echo `pwd`
+
+        #get hdf5 sources
+        if !(test -e hdf5-1.12.1.tar.bz2) then
+            echo "downloading hdf5-1.12.1.tar.gz"
+            wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar.bz2
+        fi
+        mkdir -p hdf5/parallel/src
+        tar -jxf  hdf5-1.12.1.tar.bz2 -C hdf5/parallel/src
+
+        mkdir -p hdf5/serial/src
+        tar -jxf  hdf5-1.12.1.tar.bz2 -C hdf5/serial/src
+
+
+        #get netcdf sources
+
+        if !(test -e netcdf-4.8.0.tar.gz) then
+            echo "downloading netcdf-c-4.8.0.tar.gz"
+            wget ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-c-4.8.0.tar.gz
+        fi
+        mkdir -p netcdf/parallel/src
+        tar -zxf netcdf-c-4.8.0.tar.gz -C netcdf/parallel/src
+
+        mkdir -p netcdf/serial/src
+        tar -zxf netcdf-c-4.8.0.tar.gz -C netcdf/serial/src
+ 
+ When building hdf5 you can add `--with-default-api-version=v18`to make it compatible with the netcdf build (if building netcdf)
  
 #### Checking out the source code
 
