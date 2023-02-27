@@ -10,6 +10,6 @@ Glaciers, Antarctic Ice Sheet, Ice sheet modelling, Earth system modelling, Clim
 
 ## Contact Me
 
-E-mail: claire.donnelly@knmi.nl
-Github: https://github.com/ClaireDons
-Twitter: https://twitter.com/Claire_Dons
+- E-mail: claire.donnelly@knmi.nl
+- Github: https://github.com/ClaireDons
+- Twitter: https://twitter.com/Claire_Dons
