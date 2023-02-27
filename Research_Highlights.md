@@ -1,5 +1,3 @@
-## Research Highlights
-
 ### Totten Glacier
 
 ### Northern Patagonian Icefield
