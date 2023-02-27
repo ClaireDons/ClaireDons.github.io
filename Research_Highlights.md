@@ -1,6 +1,6 @@
-
-
-
+---
+title: Research Highlights
+---
 
 ### Totten Glacier
 We looked at the effect of warm waters cyclically upwelling on to the continental shelf under Totten Glacier, East Antarctica and its potential to unground pinning points, which may lead to significant grounding line retreat. We found that these cycles could be the cause of ripples on the surface of the ice shelf, which are also present on other glaciers in Antarctica. 
