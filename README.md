@@ -7,3 +7,9 @@ I am a research scientist at KNMI, currently working on incorporating an interac
 ## Research Interests
 
 Glaciers, Antarctic Ice Sheet, Ice sheet modelling, Earth system modelling, Climate science, Sea level rise
+
+## Contact Me
+
+E-mail: claire.donnelly@knmi.nl
+Github: https://github.com/ClaireDons
+Twitter: https://twitter.com/Claire_Dons
